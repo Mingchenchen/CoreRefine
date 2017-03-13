@@ -9,9 +9,15 @@ This script does the following:
 1. prints out a Resfile that allows better core packing of a protein, the core is calculated by the SASA (solvent-accessible surface area) of each amino acid within the protein. The Resfile code should result in a better packed protein core.
 
 Combining information from these references (2,3,8,9) I found that these chosen amino acids fits them all, thus the Resfile code is chosen as follows:
+For the core:
 If the amino acids in the protein's core is part of the loop, then mutate the residue to one of the following amino acids:	AVILPFWM
 If the amino acids in the protein's core is part of the helix, then mutate the residue to one of the following amino acids:	AVILFWM
 If the amino acids in the protein's core is part of the sheet, then mutate the residue to one of the following amino acids:	AVILFWM
+
+For the boundery (CoreBoundRefine.py):
+If the amino acids in the protein's boundery is part of the loop, then mutate the residue to one of the following amino acids:	AVILFYWGNQSTPDEKR
+If the amino acids in the protein's boundery is part of the helix, then mutate the residue to one of the following amino acids:	AVILWQEKFM
+If the amino acids in the protein's boundery is part of the sheet, then mutate the residue to one of the following amino acids:	AVILFYWQTM
 
 This script was written to run on GNU/Linux using python 3, it was not tested in Windows or MacOS.
 This script will mostly be useful to refine a protein's core packing after a Rosetta FFL (Fold From Loop) computation, but can still be used to refine any protein's core.
@@ -26,10 +32,12 @@ To use follow these steps:
 2. Install DSSP in linux by running the following command in terminal (sudo apt-get install dssp).
 3. Install numpy (python3 -m pip install numpy).
 4. All files must be in the same directory as this script.
-5. Run by navigating to the working directory then typing this in the command line:
-`./CoreRefine.py FINENAME.pdb > Resfile`
-6. Run refinement and generate 1000 structures using the following command:
-`${Rosetta}/main/source/bin/rosetta_scripts.linuxgccrelease -s FILENAME.pdb -parser:protocol relax_design.xml -ex1 -ex2 -nstruct 1000`
+5. To only select the core for refinement:
+	* Run by navigating to the working directory then typing this in the command line:<br>
+	`./CoreRefine.py FINENAME.pdb > Resfile`
+	* Run refinement and generate 1000 structures using the following command:<br>
+	`${Rosetta}/main/source/bin/rosetta_scripts.linuxgccrelease -s FILENAME.pdb -parser:protocol relax_design.xml -ex1 -ex2 -nstruct 1000`
+6. To select the Core AND Boundery for refinement use the CoreBoundRefine.py script in the same way.
 7. The relax_design.xml script is a spesific rosetta script written in Bruno Correia's lab, contact lab to request a copy.
 
 
