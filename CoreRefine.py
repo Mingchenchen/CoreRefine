@@ -68,6 +68,7 @@ core=list()
 boundery=list()
 surface=list()
 count=0
+print('NATAA\nstart')
 for x,y in lis:
 	count=count+1
 
