@@ -10,14 +10,17 @@ This script does the following:
 
 Combining information from these references (2,3,8,9) I found that these chosen amino acids fits them all, thus the Resfile code is chosen as follows:
 For the core:
-If the amino acids in the protein's core is part of the loop, then mutate the residue to one of the following amino acids:	AVILPFWM
-If the amino acids in the protein's core is part of the helix, then mutate the residue to one of the following amino acids:	AVILFWM
-If the amino acids in the protein's core is part of the sheet, then mutate the residue to one of the following amino acids:	AVILFWM
+If the amino acids in the protein's core is part of the loop, then mutate the residue to one of the following amino acids:	VILPFWM
+If the amino acids in the protein's core is part of the helix, then mutate the residue to one of the following amino acids:	VILFWM
+If the amino acids in the protein's core is part of the sheet, then mutate the residue to one of the following amino acids:	VILFWM
 
 For the boundery (CoreBoundRefine.py):
-If the amino acids in the protein's boundery is part of the loop, then mutate the residue to one of the following amino acids:	AVILFYWGNQSTPDEKR
-If the amino acids in the protein's boundery is part of the helix, then mutate the residue to one of the following amino acids:	AVILWQEKFM
-If the amino acids in the protein's boundery is part of the sheet, then mutate the residue to one of the following amino acids:	AVILFYWQTM
+If the amino acids in the protein's boundery is part of the loop, then mutate the residue to one of the following amino acids:	VILFYWGNQSTPDEKR
+If the amino acids in the protein's boundery is part of the helix, then mutate the residue to one of the following amino acids:	VILWQEKFM
+If the amino acids in the protein's boundery is part of the sheet, then mutate the residue to one of the following amino acids:	VILFYWQTM
+
+In version 1.0 of this script A was being selected in the Core nor Boundery.
+In version 2.0 of this script no A is being selected in the Core nor Boundery.
 
 This script was written to run on GNU/Linux using python 3, it was not tested in Windows or MacOS.
 This script will mostly be useful to refine a protein's core packing after a Rosetta FFL (Fold From Loop) computation, but can still be used to refine any protein's core.
