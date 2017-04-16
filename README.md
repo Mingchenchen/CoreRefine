@@ -19,7 +19,8 @@ If the amino acids in the protein's boundery is part of the loop, then mutate th
 If the amino acids in the protein's boundery is part of the helix, then mutate the residue to one of the following amino acids:	VILWQEKFM
 If the amino acids in the protein's boundery is part of the sheet, then mutate the residue to one of the following amino acids:	VILFYWQTM
 
-In version 1.0 of this script A was being selected in the Core nor Boundery.\n
+In version 1.0 of this script A was being selected in the Core nor Boundery.
+
 In version 2.0 of this script no A is being selected in the Core nor Boundery.
 
 This script was written to run on GNU/Linux using python 3, it was not tested in Windows or MacOS.
