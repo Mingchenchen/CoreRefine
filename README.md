@@ -1,4 +1,4 @@
-# CoreRefine
+# CoreRefine2.0
 This script generates a Resfile that allows better core packing of a protein.
 
 
@@ -38,7 +38,7 @@ To use follow these steps:
 4. All files must be in the same directory as this script.
 5. To only select the core for refinement:
 	* Run by navigating to the working directory then typing this in the command line:<br>
-	`./CoreRefine.py FINENAME.pdb > Resfile`
+	`./CoreRefine2.0.py FINENAME.pdb > Resfile`
 	* Run refinement and generate 1000 structures using the following command:<br>
 	`${Rosetta}/main/source/bin/rosetta_scripts.linuxgccrelease -s FILENAME.pdb -parser:protocol relax_design.xml -ex1 -ex2 -nstruct 1000`
 6. To select the Core AND Boundery for refinement use the CoreBoundRefine.py script in the same way.
