@@ -1,4 +1,4 @@
-# CoreRefine2.0
+# CoreRefine3.0
 This script generates a Resfile that allows better core packing of a protein.
 
 
@@ -19,9 +19,11 @@ If the amino acids in the protein's boundery is part of the loop, then mutate th
 If the amino acids in the protein's boundery is part of the helix, then mutate the residue to one of the following amino acids:	VILWQEKFM
 If the amino acids in the protein's boundery is part of the sheet, then mutate the residue to one of the following amino acids:	VILFYWQTM
 
-In version 1.0 of this script A was being selected in the Core nor Boundery.
+In version 1.0 of this script A was being selected in the Core and Boundery.
 
 In version 2.0 of this script no A is being selected in the Core nor Boundery.
+
+In version 3.0 of this script a function to allow automatic motif sequence removal was added (that way the motif residues will not be included in the Resfile file and therefore it does not need to be removed manually).
 
 This script was written to run on GNU/Linux using python 3, it was not tested in Windows or MacOS.
 This script will mostly be useful to refine a protein's core packing after a Rosetta FFL (Fold From Loop) computation, but can still be used to refine any protein's core.
@@ -36,13 +38,14 @@ To use follow these steps:
 2. Install DSSP in linux by running the following command in terminal (sudo apt-get install dssp).
 3. Install numpy (python3 -m pip install numpy).
 4. All files must be in the same directory as this script.
-5. To only select the core for refinement:
+5. Identify the motif's start residue (MOTIF_START) and the motif's end residue (MOTIF_END)
+6. To only select the core for refinement:
 	* Run by navigating to the working directory then typing this in the command line:<br>
-	`./CoreRefine2.0.py FINENAME.pdb > Resfile`
+	`./CoreRefine3.0.py FINENAME.pdb MOTIF_START MOTIF_END > Resfile`
 	* Run refinement and generate 1000 structures using the following command:<br>
 	`${Rosetta}/main/source/bin/rosetta_scripts.linuxgccrelease -s FILENAME.pdb -parser:protocol relax_design.xml -ex1 -ex2 -nstruct 1000`
-6. To select the Core AND Boundery for refinement use the CoreBoundRefine.py script in the same way.
-7. The relax_design.xml script is a spesific rosetta script written in Bruno Correia's lab, contact lab to request a copy.
+7. To select the Core AND Boundery for refinement use the CoreBoundRefine.py script in the same way.
+8. The relax_design.xml script is a spesific rosetta script written in Bruno Correia's lab, contact lab to request a copy.
 
 
 
