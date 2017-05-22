@@ -1,14 +1,15 @@
 # CoreRefine
-This script generates a Resfile that allows better core packing of a protein.
+This script generates a mutations.resfile file that allows better core packing of a protein.
 
 
 
 ## DESCRIPTION:
 This script does the following:
 
-1. prints out a Resfile that allows better core packing of a protein, the core is calculated by the SASA (solvent-accessible surface area) of each amino acid within the protein. The Resfile code should result in a better packed protein core.
+1. prints out a mutations.resfile file that allows better core packing of a protein, the core is calculated by the SASA (solvent-accessible surface area) of each amino acid within the protein. The Resfile code should result in a better packed protein core.
 
-Combining information from these references (2,3,8,9) I found that these chosen amino acids fits them all, thus the Resfile code is chosen as follows:
+Combining information from these references (2,3,8,9) I found that these chosen amino acids fits them all, thus the mutations.resfile code is chosen as follows:
+
 For the core:
 If the amino acids in the protein's core is part of the loop, then mutate the residue to one of the following amino acids:	AVILPFWM
 If the amino acids in the protein's core is part of the helix, then mutate the residue to one of the following amino acids:	AVILFWM
@@ -19,10 +20,10 @@ If the amino acids in the protein's boundery is part of the loop, then mutate th
 If the amino acids in the protein's boundery is part of the helix, then mutate the residue to one of the following amino acids:	AVILWQEKFM
 If the amino acids in the protein's boundery is part of the sheet, then mutate the residue to one of the following amino acids:	AVILFYWQTM
 
-There are two version of this script with Alenine (_A) and without Alenine (_noA). Refinement with A seems to be better.
+There are two version of this script: with Alenine (_A) and without Alenine (_noA). Refinement without Alenine seems to be better.
 
 This script was written to run on GNU/Linux using python 3, it was not tested in Windows or MacOS.
-This script will mostly be useful to refine a protein's core packing after a Rosetta FFL (Fold From Loop) computation, but can still be used to refine any protein's core.
+This script will mostly be useful to refine a protein's core packing after a Rosetta FFL (Fold From Loop) computation using RosettaDesign, but can still be used to refine any protein's core.
 Contact the author at sari.sabban@gmail.com for any questions regarding this script.
 
 
@@ -34,14 +35,12 @@ To use follow these steps:
 2. Install DSSP in linux by running the following command in terminal (sudo apt-get install dssp).
 3. Install numpy (python3 -m pip install numpy).
 4. All files must be in the same directory as this script.
-5. Identify the motif's start residue (MOTIF_START) and the motif's end residue (MOTIF_END)
-6. To only select the core for refinement:
+5. Identify the motif's start residue (MOTIF_START) and the motif's end residue (MOTIF_END). The motif is the part of the protein that you do now want to mutate.
+6. Run the script:
 	* Run by navigating to the working directory then typing this in the command line:<br>
-	`python3 CoreBoundRefine_A.py FINENAME.pdb MOTIF_START MOTIF_END > Resfile`
-	* Run refinement and generate 1000 structures using the following command:<br>
-	`${Rosetta}/main/source/bin/rosetta_scripts.linuxgccrelease -s FILENAME.pdb -parser:protocol relax_design.xml -ex1 -ex2 -nstruct 1000`
-7. To select the Core AND Boundery for refinement use the CoreBoundRefine.py script in the same way.
-8. The relax_design.xml script is a spesific rosetta script written in Bruno Correia's lab, contact lab to request a copy.
+	`python3 CoreBoundRefine_noA.py FINENAME.pdb MOTIF_START MOTIF_END > mutations.resfile`
+7. To only select the core for refinement use CoreRefine.py. To select the Core AND Boundery for refinement use the CoreBoundRefine_A.py (to include alenine) or CoreBoundRefine_noA.py (do not include alenine).
+8. Use the mutations.resfile with RosettaDesign.
 
 
 
