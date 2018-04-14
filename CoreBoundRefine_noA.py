@@ -52,7 +52,7 @@ for x in dssp:					#Loop to isolate SASA for each amino acid
 #	Helix or Sheet:	SASA=>60
 #	Loop:		SASA=>40
 #
-#Boundry:
+#Boundary:
 #	Helix or Sheet:	15<SASA<60
 #	Loop:		25<SASA<40
 #
@@ -67,7 +67,7 @@ for x in dssp:					#Loop to isolate SASA for each amino acid
 #
 #Print custom Resfile code for core refinement (these rules are personally derrived by combining rules from different sources):
 core=list()
-boundery=list()
+boundary=list()
 surface=list()
 count=0
 print('NATAA\nstart')
@@ -80,8 +80,8 @@ for x,y in lis:
 		if y<=25 and (x=='-' or x=='T' or x=='S'):	#Core Loop
 			core.append(count)
 			print(count,'A PIKAA VILPFWM')
-		elif 25<y<40 and (x=='-' or x=='T' or x=='S'):	#Boundery Loop
-			boundery.append(count)
+		elif 25<y<40 and (x=='-' or x=='T' or x=='S'):	#Boundary Loop
+			boundary.append(count)
 			print(count,'A PIKAA VILFYWGNQSTPDEKR')
 		elif y>=40 and (x=='-' or x=='T' or x=='S'):	#Surface Loop
 			surface.append(count)
@@ -89,8 +89,8 @@ for x,y in lis:
 		elif y<=15 and (x=='G' or x=='H' or x=='I'):	#Core Helix
 			core.append(count)
 			print(count,'A PIKAA VILFWM')
-		elif 15<y<60 and (x=='G' or x=='H' or x=='I'):	#Boundery Helix
-			boundery.append(count)
+		elif 15<y<60 and (x=='G' or x=='H' or x=='I'):	#Boundary Helix
+			boundary.append(count)
 			print(count,'A PIKAA VILWQEKFM')
 		elif y>=60 and (x=='G' or x=='H' or x=='I'):	#Surface Helix
 			surface.append(count)
@@ -98,8 +98,8 @@ for x,y in lis:
 		elif y<=15 and (x=='B' or x=='E'):	#Core Sheet
 			core.append(count)
 			print(count,'A PIKAA VILFWM')
-		elif 15<y<60 and (x=='B' or x=='E'):	#Boundery Sheet
-			boundery.append(count)
+		elif 15<y<60 and (x=='B' or x=='E'):	#Boundary Sheet
+			boundary.append(count)
 			print(count,'A PIKAA VILFYWQTM')
 		elif y>=60 and (x=='B' or x=='E'):	#Surface Sheet
 			surface.append(count)
